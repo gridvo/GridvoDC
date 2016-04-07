@@ -1,0 +1,20 @@
+{
+  "name": "gdatacenter",
+  "version": "0.0.1",
+  "main": "index",
+  "author": {
+    "name": "linmadan",
+    "email": "772181827@qq.com"
+  },
+  "dependencies": {
+    "async": "^2.0.0-rc.2",
+    "bearcat": "^0.4.29",
+    "mongodb": "^2.1.14",
+    "mqtt": "^1.7.4",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "should": "^8.3.0"
+  }
+}

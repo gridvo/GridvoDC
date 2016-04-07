@@ -1,0 +1,28 @@
+{
+  "name": "gDataCenterTestDI",
+  "scan": "lib",
+  "beans": [
+    {
+      "id": "dataDispatch",
+      "func": "lib.application.dataDispatch",
+      "props": [
+        {
+          "name": "__dataRepository__",
+          "ref": "mockDataRepository"
+        },
+        {
+          "name": "__stationRepository__",
+          "ref": "mockStationRepository"
+        }
+      ]
+    },
+    {
+      "id": "mockDataRepository",
+      "func": "test.mock.dataRepository"
+    },
+    {
+      "id": "mockStationRepository",
+      "func": "test.mock.stationRepository"
+    }
+  ]
+}
