@@ -42,7 +42,7 @@ StationRepository.prototype.isStationExist = function (stationName, cb) {
     }
 };
 
-StationRepository.prototype.updateStation = function (stationRTDataConfig, cb) {
+StationRepository.prototype.updateStationRTData = function (stationRTDataConfig, cb) {
     switch (stationRTDataConfig.stationName) {
         case "noStation":
             cb(null, {stationName: "noStation"});

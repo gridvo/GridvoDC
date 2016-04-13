@@ -33,6 +33,16 @@
           "value": "mongodb://localhost:27017/GDataCenter"
         }
       ]
+    },
+    {
+      "id": "dataRepository",
+      "func": "lib.application.repository.dataMongoDB",
+      "props": [
+        {
+          "name": "dBUrl",
+          "value": "mongodb://localhost:27017/GDataCenter"
+        }
+      ]
     }
   ]
 }
