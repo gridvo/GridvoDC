@@ -22,7 +22,19 @@ StationRepository.prototype.getAllStation = function (cb) {
 };
 
 StationRepository.prototype.saveStation = function (stationName, cb) {
-    cb(null);
+    switch (stationName) {
+        case "newStation":
+            cb(null, "newStation");
+            break;
+        case "noStation":
+            cb(null, "");
+            break;
+        case "inDCStation1":
+            cb(null, "inDCStation1");
+            break;
+        default:
+            return;
+    }
 };
 
 StationRepository.prototype.isStationExist = function (stationName, cb) {

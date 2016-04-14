@@ -1,7 +1,6 @@
 var bearcat = require('bearcat');
 var _ = require('underscore');
 var should = require('should');
-var dataDispatch = require('../../lib/application/dataDispatch');
 var appEvent = require('../../lib/application/appEvent');
 var appError = require('../../lib/application/appError');
 
@@ -133,7 +132,7 @@ describe('dataDispatch use case test', function () {
                 });
                 var oData = {};
                 oData.stationName = "inDCStation1";
-                oData.timestamp = new Date("2016-1-1 00:15:00");
+                oData.timestamp = "2016-1-1 00:15:00";
                 oData.dataName = "rain";
                 oData.value = 2000;
                 DataDispatch.receiveData(oData);

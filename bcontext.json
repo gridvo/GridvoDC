@@ -1,0 +1,50 @@
+{
+  "name": "gDataCenterTestDI",
+  "scan": "lib",
+  "beans": [
+    {
+      "id": "dataDispatch",
+      "func": "lib.application.dataDispatch",
+      "props": [
+        {
+          "name": "__dataRepository__",
+          "ref": "dataRepository"
+        },
+        {
+          "name": "__stationRepository__",
+          "ref": "stationRepository"
+        }
+      ]
+    },
+    {
+      "id": "stationRepository",
+      "func": "lib.application.repository.stationMongoDB",
+      "props": [
+        {
+          "name": "dBUrl",
+          "value": "mongodb://localhost:27017/GDataCenter"
+        }
+      ]
+    },
+    {
+      "id": "dataRepository",
+      "func": "lib.application.repository.dataMongoDB",
+      "props": [
+        {
+          "name": "dBUrl",
+          "value": "mongodb://localhost:27017/GDataCenter"
+        }
+      ]
+    },
+    {
+      "id": "mqttClient",
+      "func": "lib.infrastructure.mqttClient",
+      "args": [
+        {
+          "name": "mqttBrokerUrl",
+          "value": "mqtt://localhost:1883"
+        }
+      ]
+    }
+  ]
+}
