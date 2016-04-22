@@ -26,6 +26,35 @@ describe('data repository MongoDB use case test', function () {
                 });
                 Repository.saveDataPoint(dataPoint, function (err, dataPoint) {
                     dataPoint.stationName.should.be.eql("testStation");
+                    dataPoint.timestamp.should.be.eql(new Date("2016-5-1 00:15:00"));
+                    done();
+                });
+            });
+        });
+    });
+    describe('#getDataSection(sectionOptions, cb)', function () {
+        context('get data Section', function () {
+            it('Data Section should return [] if no this section data in the data center', function (done) {
+                var sectionOptions = {
+                    stationName: "testStation",
+                    dataName: "rain",
+                    startD: new Date("2016-5-1 00:00:00"),
+                    endD: new Date("2016-5-1 00:14:00")
+                };
+                Repository.getDataSection(sectionOptions, function (err, dataSection) {
+                    dataSection.datas.should.be.eql([]);
+                    done();
+                });
+            });
+            it('should return section data in the data center', function (done) {
+                var sectionOptions = {
+                    stationName: "testStation",
+                    dataName: "rain",
+                    startD: new Date("2016-5-1 00:00:00"),
+                    endD: new Date("2016-5-1 00:15:00")
+                };
+                Repository.getDataSection(sectionOptions, function (err, dataSection) {
+                    dataSection.datas.length.should.be.eql(1);
                     done();
                 });
             });

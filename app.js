@@ -20,7 +20,7 @@ bearcat.start(function () {
             return;
         }
         MqttClient.on("RTDataArrive", function (rTData) {
-            DataDispatch.receiveData(rTData);
+            DataDispatch.addRTData(rTData);
         });
         MqttClient.subscribeRTData();
     });

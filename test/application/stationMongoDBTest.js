@@ -73,7 +73,7 @@ describe('Station repository MongoDB use case test', function () {
     });
     describe('#updateStationRTData(stationRTDataConfig, cb)', function () {
         context('update station RT data config', function () {
-            it('should return {} if no station in datacenter', function (done) {
+            it('should return null if no station in datacenter', function (done) {
                 var stationRTDataConfig = {
                     stationName: "noStation",
                     rTDataConfigs: {
@@ -85,7 +85,7 @@ describe('Station repository MongoDB use case test', function () {
                     }
                 };
                 Repository.updateStationRTData(stationRTDataConfig, function (err, station) {
-                    station.should.be.eql({});
+                    _.isNull(station).should.be.eql(true);
                     done();
                 });
             });

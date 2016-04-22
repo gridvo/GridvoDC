@@ -9,12 +9,12 @@ StationRepository.prototype.getAllStation = function (cb) {
         rTDataConfigs: {
             rain: {
                 dataName: "rain",
-                timeSpace: 1000,
+                timeSpace: 1000 * 60,
                 timeLong: 1000 * 60 * 60 * 4
             },
             meter: {
                 dataName: "meter",
-                timeSpace: 1000,
+                timeSpace: 1000 * 60,
                 timeLong: 1000 * 60 * 60 * 4
             }
         }
@@ -61,6 +61,9 @@ StationRepository.prototype.updateStationRTData = function (stationRTDataConfig,
             break;
         case "errStation":
             cb(new Error("error"), null);
+            break;
+        case "inDCStation1":
+            cb(null, {stationName: "inDCStation1"});
             break;
         default:
             cb(null, {});

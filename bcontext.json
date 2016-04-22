@@ -42,7 +42,11 @@
       "args": [
         {
           "name": "mqttBrokerUrl",
-          "value": "mqtt://localhost:1883"
+          "value": "mqtt://10.0.3.16:61613"
+        },
+        {
+          "name": "optionsStr",
+          "value": "{\"username\":\"gridvo\",\"password\":\"gridvo\"}"
         }
       ]
     }
