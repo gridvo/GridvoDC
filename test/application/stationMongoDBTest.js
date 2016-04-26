@@ -24,22 +24,6 @@ describe('Station repository MongoDB use case test', function () {
             });
         });
     });
-    describe('#isStationExist(stationName, cb)', function () {
-        context('judge a station is exist', function () {
-            it('should false if the station is not exist', function (done) {
-                Repository.isStationExist("noStation", function (err, isExist) {
-                    isExist.should.be.eql(false);
-                    done();
-                });
-            });
-            it('should true if the station is exist', function (done) {
-                Repository.isStationExist("station1", function (err, isExist) {
-                    isExist.should.be.eql(true);
-                    done();
-                });
-            });
-        });
-    });
     describe('#getAllStation(cb)', function () {
         context('when data dispatch launch', function () {
             it('should return [] if no station in mongodb', function (done) {

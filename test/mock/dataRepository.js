@@ -43,7 +43,7 @@ DataRepository.prototype.getDataSection = function (sectionOptions, cb) {
             if (sectionOptions.dataName == "rain") {
                 var dataSection = new DataSection({
                     stationName: "inDCStation1",
-                    dataName: "rain",
+                    dataName: "rain"
                 });
                 dataSection.datas.push({
                     timestamp: new Date("2016-1-1 00:15:00"),
@@ -58,7 +58,7 @@ DataRepository.prototype.getDataSection = function (sectionOptions, cb) {
             if (sectionOptions.dataName == "meter") {
                 var dataSection = new DataSection({
                     stationName: "inDCStation1",
-                    dataName: "meter",
+                    dataName: "meter"
                 });
                 dataSection.datas.push({
                     timestamp: new Date("2016-1-1 00:15:00"),
@@ -73,7 +73,7 @@ DataRepository.prototype.getDataSection = function (sectionOptions, cb) {
             if (sectionOptions.dataName == "YG") {
                 var dataSection = new DataSection({
                     stationName: "inDCStation1",
-                    dataName: "YG",
+                    dataName: "YG"
                 });
                 cb(null, dataSection);
             }

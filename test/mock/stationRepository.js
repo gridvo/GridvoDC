@@ -27,29 +27,12 @@ StationRepository.prototype.saveStation = function (stationName, cb) {
             cb(null, "newStation");
             break;
         case "noStation":
-            cb(null, "");
+            cb(null, "noStation");
             break;
         case "inDCStation1":
             cb(null, "inDCStation1");
             break;
         default:
-            return;
-    }
-};
-
-StationRepository.prototype.isStationExist = function (stationName, cb) {
-    switch (stationName) {
-        case "newStation":
-            cb(null, false);
-            break;
-        case "noStation":
-            cb(null, false);
-            break;
-        case "errStation":
-            cb(new Error("error"), false);
-            break;
-        default:
-            cb(null, true);
             return;
     }
 };

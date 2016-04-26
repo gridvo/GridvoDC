@@ -9,6 +9,16 @@
         {
           "name": "__dataRepository__",
           "ref": "mockDataRepository"
+        }
+      ]
+    },
+    {
+      "id": "dataRTMaster",
+      "func": "lib.application.dataRTMaster",
+      "props": [
+        {
+          "name": "__dataRepository__",
+          "ref": "mockDataRepository"
         },
         {
           "name": "__stationRepository__",
