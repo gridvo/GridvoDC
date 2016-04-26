@@ -24,6 +24,22 @@ describe('dataRTMaster use case test', function () {
             });
         });
     });
+    describe('#StationRTDataIsOpen(stationName, cb)', function () {
+        context('judge station rt data is open', function () {
+            it('should false then station rt data is not open', function (done) {
+                DataRTMaster.StationRTDataIsOpen("noStation", function (err, cBData) {
+                    cBData.should.be.eql(false);
+                    done();
+                });
+            });
+            it('should true then station rt data is open', function (done) {
+                DataRTMaster.StationRTDataIsOpen("inDCStation1", function (err, cBData) {
+                    cBData.should.be.eql(true);
+                    done();
+                });
+            });
+        });
+    });
     describe('#setStationRTData(stationRTDataConfig,cb)', function () {
         context('when station client set rt data monitor', function () {
             it('should success if station in data center and load rt data', function (done) {

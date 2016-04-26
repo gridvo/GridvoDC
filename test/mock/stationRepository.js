@@ -3,7 +3,7 @@ var DataStation = require('../../lib/domain/dataStation');
 function StationRepository() {
 };
 
-StationRepository.prototype.getAllStation = function (cb) {
+StationRepository.prototype.getAllOpenRTDataStation = function (cb) {
     cb(null, [new DataStation({
         stationName: "inDCStation1",
         rTDataConfigs: {

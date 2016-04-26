@@ -24,10 +24,10 @@ describe('Station repository MongoDB use case test', function () {
             });
         });
     });
-    describe('#getAllStation(cb)', function () {
-        context('when data dispatch launch', function () {
-            it('should return [] if no station in mongodb', function (done) {
-                MongoClient.connect("mongodb://localhost:27017/GDataCenter", function (err, db) {
+    describe('#getAllOpenRTDataStation(cb)', function () {
+        context('get all have open the rt data station', function () {
+            it('should return [] if no station have rTDataConfigs', function (done) {
+                MongoClient.connect("mongodb://localhost:27017/TestGDataCenter", function (err, db) {
                     if (err) {
                         return;
                     }
@@ -36,7 +36,7 @@ describe('Station repository MongoDB use case test', function () {
                             db.close();
                             return;
                         }
-                        Repository.getAllStation(function (err, stations) {
+                        Repository.getAllOpenRTDataStation(function (err, stations) {
                             stations.should.be.eql([]);
                             db.close();
                             done();
@@ -46,7 +46,7 @@ describe('Station repository MongoDB use case test', function () {
             });
             it('should return all stations in mongodb', function (done) {
                 Repository.saveStation("station1", function (err, stationName) {
-                    Repository.getAllStation(function (err, stations) {
+                    Repository.getAllOpenRTDataStation(function (err, stations) {
                         stations.length.should.be.eql(1);
                         stations[0].stationName.should.be.eql("station1");
                         done();
@@ -116,7 +116,7 @@ describe('Station repository MongoDB use case test', function () {
         });
     });
     after(function (done) {
-        MongoClient.connect("mongodb://localhost:27017/GDataCenter", function (err, db) {
+        MongoClient.connect("mongodb://localhost:27017/TestGDataCenter", function (err, db) {
             if (err) {
                 return;
             }

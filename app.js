@@ -3,6 +3,7 @@ var bearcat = require('bearcat');
 var appEvent = require('./lib/application/appEvent');
 
 var DataDispatch;
+var DataRTMaster;
 var MqttClient;
 var contextPath = require.resolve('./bcontext.json');
 bearcat.createApp([contextPath]);

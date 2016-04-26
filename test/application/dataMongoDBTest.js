@@ -60,8 +60,24 @@ describe('data repository MongoDB use case test', function () {
             });
         });
     });
+    describe('#getStationDataNames(stationName, cb)', function () {
+        context('get station all data name', function () {
+            it('should return [] when no station datas in the data center', function (done) {
+                Repository.getStationDataNames("noStation", function (err, dataNames) {
+                    dataNames.should.be.eql([]);
+                    done();
+                });
+            });
+            it('should return data names when this datas in the data center', function (done) {
+                Repository.getStationDataNames("testStation", function (err, dataNames) {
+                    dataNames.length.should.be.eql(1);
+                    done();
+                });
+            });
+        });
+    });
     after(function (done) {
-        MongoClient.connect("mongodb://localhost:27017/GDataCenter", function (err, db) {
+        MongoClient.connect("mongodb://localhost:27017/TestGDataCenter", function (err, db) {
             if (err) {
                 return;
             }
