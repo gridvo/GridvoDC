@@ -111,6 +111,16 @@ describe('dataRTMaster use case test', function () {
                 DataRTMaster.receiveRTData(dataPoint);
                 DataRTMaster.__rTDataMasterCenter__.stationRTDatas["inDCStation1"].rTDatas["rain"].datas.length.should.be.eql(4);
                 DataRTMaster.__rTDataMasterCenter__.stationRTDatas["inDCStation1"].rTDatas["rain"].lastDataTimestamp.should.be.eql(new Date("2016-1-1 00:18:00"));
+                oData = {};
+                oData.stationName = "inDCStation1";
+                oData.timestamp = new Date("2016-1-1 00:18:00");
+                oData.dataName = "rain";
+                oData.value = 3000;
+                var dataPoint = new DataPoint(oData);
+                DataRTMaster.receiveRTData(dataPoint);
+                DataRTMaster.__rTDataMasterCenter__.stationRTDatas["inDCStation1"].rTDatas["rain"].datas.length.should.be.eql(4);
+                DataRTMaster.__rTDataMasterCenter__.stationRTDatas["inDCStation1"].rTDatas["rain"].lastDataTimestamp.should.be.eql(new Date("2016-1-1 00:18:00"));
+                DataRTMaster.__rTDataMasterCenter__.stationRTDatas["inDCStation1"].rTDatas["rain"].datas[3].value.should.be.eql(3000);
             });
             it('should emit "RTDATAS_PUB" domain event,when rt data can pub', function (done) {
                 DataRTMaster.on(appEvent.domain.RTDATAS_PUB, function (eventData) {

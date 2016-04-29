@@ -23,6 +23,14 @@ DataRepository.prototype.saveDataPoint = function (dataPoint, cb) {
                     value: 2000
                 }))
             }
+            else if(dataPoint.value == 3000){
+                cb(null, new DataPoint({
+                    stationName: "inDCStation1",
+                    timestamp: new Date("2016-1-1 00:18:00"),
+                    dataName: "rain",
+                    value: 3000
+                }))
+            }
             else {
                 cb(null, new DataPoint({
                     stationName: "inDCStation1",
@@ -83,6 +91,10 @@ DataRepository.prototype.getDataSection = function (sectionOptions, cb) {
             cb(null, dataSection);
             return;
     }
+};
+
+DataRepository.prototype.getStationDataNames = function (stationName, callback) {
+    callback(null, []);
 };
 
 module.exports = DataRepository;

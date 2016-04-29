@@ -23,8 +23,31 @@ bearcat.start(function () {
         console.log(`data point added:${JSON.stringify(eventData)}`);
         DataRTMaster.receiveRTData(eventData);
     });
-    MqttClient.on("DataArrive", function (rTData) {
-        DataDispatch.receiveData(rTData);
+    MqttClient.on("DataArrive", function (data) {
+        DataDispatch.receiveData(data);
+    });
+    MqttClient.on("StationStartRTDataMonitor", function (stationName) {
+        DataRTMaster.stationStartRTDataMonitor(stationName, function (err, cBData) {
+            if (err) {
+                return;
+            }
+            MqttClient.publishStationStartRTDataMonitorResult(cBData);
+        })
+    });
+    MqttClient.on("StationSetStationRTData", function (stationRTDataConfig) {
+        DataRTMaster.setStationRTData(stationRTDataConfig, function (err, cBData) {
+            if (err) {
+                return;
+            }
+            DataRTMaster.stationStartRTDataMonitor(cBData.stationName, function (err, cBData) {
+                if (err) {
+                    return;
+                }
+                MqttClient.publishStationStartRTDataMonitorResult(cBData);
+            })
+        })
     });
     MqttClient.subscribeData();
+    MqttClient.subscribeStationStartRTDataMonitor();
+    MqttClient.subscribeStationSetStationRTData();
 });
