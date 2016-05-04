@@ -16,8 +16,13 @@ bearcat.start(function () {
             return;
         }
         DataRTMaster.on(appEvent.application.STATION_OPEN_RTDATA, function (eventData) {
+            MqttClient.publishStationStartRTDataMonitorResult(cBData);
             console.log(`station added:${JSON.stringify(eventData)}`);
-        })
+        });
+        DataRTMaster.on(appEvent.domain.RTDATAS_PUB, function (eventData) {
+            MqttClient.publishStationPubRTData(eventData);
+            console.log(`station pub rt data:${JSON.stringify(eventData)}`);
+        });
     });
     DataDispatch.on(appEvent.application.DATA_POINT_SAVE_SUCCESS, function (eventData) {
         console.log(`data point added:${JSON.stringify(eventData)}`);
