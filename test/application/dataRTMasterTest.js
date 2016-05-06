@@ -153,7 +153,7 @@ describe('dataRTMaster use case test', function () {
             });
             it('should return rt data', function (done) {
                 DataRTMaster.getRTData("inDCStation1", "rain", function (err, rTData) {
-                    rTData.datas.length.should.be.eql(3);
+                    rTData.datas.length.should.be.eql(4);
                     done();
                 });
             });

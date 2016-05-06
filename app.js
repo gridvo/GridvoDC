@@ -11,12 +11,12 @@ bearcat.start(function () {
     DataDispatch = bearcat.getBean('dataDispatch');
     DataRTMaster = bearcat.getBean('dataRTMaster');
     MqttClient = bearcat.getBean('mqttClient');
-    DataRTMaster.launch(function (err, cBdata) {
+    DataRTMaster.launch(function (err, cBData) {
         if (err) {
             return;
         }
         DataRTMaster.on(appEvent.application.STATION_OPEN_RTDATA, function (eventData) {
-            MqttClient.publishStationStartRTDataMonitorResult(cBData);
+            MqttClient.publishStationStartRTDataMonitorResult(eventData);
             console.log(`station added:${JSON.stringify(eventData)}`);
         });
         DataRTMaster.on(appEvent.domain.RTDATAS_PUB, function (eventData) {
