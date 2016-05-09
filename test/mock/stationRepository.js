@@ -9,11 +9,19 @@ StationRepository.prototype.getAllOpenRTDataStation = function (cb) {
         rTDataConfigs: {
             rain: {
                 dataName: "rain",
+                openRDM: true,
                 timeSpace: 1000 * 60,
                 timeLong: 1000 * 60 * 60 * 4
             },
             meter: {
                 dataName: "meter",
+                openRDM: true,
+                timeSpace: 1000 * 60,
+                timeLong: 1000 * 60 * 60 * 4
+            },
+            KWh: {
+                dataName: "KWh",
+                openRDM: false,
                 timeSpace: 1000 * 60,
                 timeLong: 1000 * 60 * 60 * 4
             }

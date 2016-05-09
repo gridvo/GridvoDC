@@ -52,6 +52,7 @@ describe('dataRTMaster use case test', function () {
                 stationRTDataConfig.rTDataConfigs = {
                     meter: {
                         dataName: "meter",
+                        openRDM: true,
                         timeSpace: 1000 * 30,
                         timeLong: 1000 * 60 * 60 * 4
                     }
@@ -81,11 +82,13 @@ describe('dataRTMaster use case test', function () {
                 stationRTDataConfig.rTDataConfigs = {
                     rain: {
                         dataName: "rain",
+                        openRDM: true,
                         timeSpace: 1000,
                         timeLong: 1000 * 60 * 60 * 4
                     },
                     meter: {
                         dataName: "meter",
+                        openRDM: true,
                         timeSpace: 1000,
                         timeLong: 1000 * 60 * 60 * 4
                     }
@@ -126,6 +129,7 @@ describe('dataRTMaster use case test', function () {
                 stationRTDataConfig.rTDataConfigs = {
                     meter: {
                         dataName: "meter",
+                        openRDM: true,
                         timeSpace: 1000 * 60,
                         timeLong: 1000 * 60
                     }
