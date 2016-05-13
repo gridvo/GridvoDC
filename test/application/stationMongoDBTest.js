@@ -115,6 +115,61 @@ describe('Station repository MongoDB use case test', function () {
             });
         });
     });
+    describe('#updateStationDataVisualization(stationDVConfig, cb)', function () {
+        context('update station data visualization config', function () {
+            it('should return null if no station in datacenter', function (done) {
+                var stationDVConfig = {
+                    stationName: "noStation",
+                    dVConfigs: {
+                        rain: {
+                            visualName: "雨量",
+                            maxV: 3000,
+                            minV: 2900
+                        }
+                    }
+                };
+                Repository.updateStationDataVisualization(stationDVConfig, function (err, station) {
+                    _.isNull(station).should.be.eql(true);
+                    done();
+                });
+            });
+            it('should return station if update success', function (done) {
+                var stationDVConfig = {
+                    stationName: "station1",
+                    dVConfigs: {
+                        rain: {
+                            visualName: "雨量",
+                            maxV: 3000,
+                            minV: 2900
+                        }
+                    }
+                };
+                Repository.updateStationDataVisualization(stationDVConfig, function (err, station) {
+                    station.stationName.should.be.eql("station1");
+                    station.dVConfigs.rain.visualName.should.be.eql("雨量");
+                    done();
+                });
+            });
+        });
+    });
+    describe('#getStationDVConfig(stationName, cb)', function () {
+        context('get station data visualization config', function () {
+            it('should return null if no station in datacenter', function (done) {
+                Repository.getStationDVConfig("noStation", function (err, dVConfigs) {
+                    _.isNull(dVConfigs).should.be.eql(true);
+                    done();
+                });
+            });
+            it('should return station data visualization config if station in datacenter', function (done) {
+                Repository.getStationDVConfig("station1", function (err, dVConfigs) {
+                    dVConfigs.rain.visualName.should.be.eql("雨量");
+                    dVConfigs.rain.maxV.should.be.eql(3000);
+                    dVConfigs.rain.minV.should.be.eql(2900);
+                    done();
+                });
+            });
+        });
+    });
     after(function (done) {
         MongoClient.connect("mongodb://localhost:27017/TestGDataCenter", function (err, db) {
             if (err) {
