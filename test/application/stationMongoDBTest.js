@@ -152,6 +152,23 @@ describe('Station repository MongoDB use case test', function () {
             });
         });
     });
+    describe('#getStationRDConfig(stationName, cb)', function () {
+        context('get station rt data config', function () {
+            it('should return null if no station in datacenter', function (done) {
+                Repository.getStationRDConfig("noStation", function (err, rDConfigs) {
+                    _.isNull(rDConfigs).should.be.eql(true);
+                    done();
+                });
+            });
+            it('should return rt data config if station in datacenter', function (done) {
+                Repository.getStationRDConfig("station1", function (err, rDConfigs) {
+                    rDConfigs.rain.timeSpace.should.be.eql(2000);
+                    rDConfigs.rain.timeLong.should.be.eql(1000 * 60 * 60 * 4);
+                    done();
+                });
+            });
+        });
+    });
     describe('#getStationDVConfig(stationName, cb)', function () {
         context('get station data visualization config', function () {
             it('should return null if no station in datacenter', function (done) {
