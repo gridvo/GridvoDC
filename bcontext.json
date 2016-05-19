@@ -32,7 +32,7 @@
       "props": [
         {
           "name": "dBUrl",
-          "value": "mongodb://localhost:27017/GDataCenter"
+          "value": "mongodb://10.0.3.23:27017/GDataCenter"
         }
       ]
     },
@@ -42,7 +42,7 @@
       "props": [
         {
           "name": "dBUrl",
-          "value": "mongodb://localhost:27017/GDataCenter"
+          "value": "mongodb://10.0.3.23:27017/GDataCenter"
         }
       ]
     },
@@ -52,7 +52,7 @@
       "args": [
         {
           "name": "mqttBrokerUrl",
-          "value": "mqtt://10.0.3.16:61613"
+          "value": "mqtt://10.0.3.21:61613"
         },
         {
           "name": "optionsStr",
