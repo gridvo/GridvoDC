@@ -32,7 +32,7 @@
       "props": [
         {
           "name": "dBUrl",
-          "value": "mongodb://10.0.3.23:27017/GDataCenter"
+          "value": "mongodb://10.0.2.16:27017/GDataCenter"
         }
       ]
     },
@@ -42,7 +42,7 @@
       "props": [
         {
           "name": "dBUrl",
-          "value": "mongodb://10.0.3.23:27017/GDataCenter"
+          "value": "mongodb://10.0.2.16:27017/GDataCenter"
         }
       ]
     },
