@@ -100,9 +100,9 @@ bearcat.start(function () {
                 for (let dataName of dataNames) {
                     dVConfigs[dataName] = {};
                     dVConfigs[dataName].dataName = dataName;
-                    dVConfigs[dataName].visualName = cBData[dataName] && cBData[dataName].visualName ? cBData[dataName].visualName : dataName;
-                    dVConfigs[dataName].maxV = cBData[dataName] && cBData[dataName].maxV ? cBData[dataName].maxV : null;
-                    dVConfigs[dataName].minV = cBData[dataName] && cBData[dataName].minV ? cBData[dataName].minV : null;
+                    dVConfigs[dataName].visualName = cBData && cBData[dataName] && cBData[dataName].visualName ? cBData[dataName].visualName : dataName;
+                    dVConfigs[dataName].maxV = cBData && cBData[dataName] && cBData[dataName].maxV ? cBData[dataName].maxV : null;
+                    dVConfigs[dataName].minV = cBData && cBData[dataName] && cBData[dataName].minV ? cBData[dataName].minV : null;
                 }
                 var stationDVConfig = {};
                 stationDVConfig.stationName = stationName;
