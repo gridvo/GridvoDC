@@ -103,7 +103,8 @@ bearcat.start(function () {
                     dVConfigs[dataName].visualName = cBData && cBData[dataName] && cBData[dataName].visualName ? cBData[dataName].visualName : dataName;
                     dVConfigs[dataName].maxV = cBData && cBData[dataName] && cBData[dataName].maxV ? cBData[dataName].maxV : null;
                     dVConfigs[dataName].minV = cBData && cBData[dataName] && cBData[dataName].minV ? cBData[dataName].minV : null;
-                    dVConfigs[dataName].axisIntervalV = cBData && cBData[dataName] && cBData[dataName].axisIntervalV ? cBData[dataName].axisInterval : 0;
+                    dVConfigs[dataName].axisIntervalV = cBData && cBData[dataName] && cBData[dataName].axisIntervalV ? cBData[dataName].axisIntervalV : 0;
+                    dVConfigs[dataName].splitNumber = cBData && cBData[dataName] && cBData[dataName].splitNumber ? cBData[dataName].splitNumber : 0;
                 }
                 var stationDVConfig = {};
                 stationDVConfig.stationName = stationName;
