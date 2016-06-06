@@ -13,10 +13,10 @@ describe('dataRTMaster use case test', function () {
             DataRTMaster = bearcat.getBean('dataRTMaster');
         });
     });
-    describe('#launch(cb)', function () {
+    describe('#launch(stationNames, cb)', function () {
         context('when data rt master launch', function () {
             it('should load station RT data then station in data center have rTDataConfigs', function (done) {
-                DataRTMaster.launch(function (err, cBData) {
+                DataRTMaster.launch([], function (err, cBData) {
                     cBData.stationCount.should.be.eql(1);
                     cBData.rTDataCount.should.be.eql(2);
                     done();

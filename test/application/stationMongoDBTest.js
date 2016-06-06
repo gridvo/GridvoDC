@@ -55,6 +55,23 @@ describe('Station repository MongoDB use case test', function () {
             });
         });
     });
+    describe('#getOpenRTDataStationForNames(stationNames, cb)', function () {
+        context('get have open the rt data station for station names', function () {
+            it('should return [] if no station in this names', function (done) {
+                Repository.getOpenRTDataStationForNames(["noName"], function (err, stations) {
+                    stations.should.be.eql([]);
+                    done();
+                });
+            });
+            it('should return station if station in this names', function (done) {
+                Repository.getOpenRTDataStationForNames(["station1"], function (err, stations) {
+                    stations.length.should.be.eql(1);
+                    stations[0].stationName.should.be.eql("station1");
+                    done();
+                });
+            });
+        });
+    });
     describe('#updateStationRTData(stationRTDataConfig, cb)', function () {
         context('update station RT data config', function () {
             it('should return null if no station in datacenter', function (done) {

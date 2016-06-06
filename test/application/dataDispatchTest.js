@@ -32,7 +32,7 @@ describe('dataDispatch use case test', function () {
             });
         });
     });
-    describe('#getDatas(dataOptions, cb)', function () {
+    describe('#extractDatas(dataOptions, cb)', function () {
         context('when get the data', function () {
             it('should return [] datas if no data in data center', function (done) {
                 var dataOptions = {};
@@ -40,7 +40,7 @@ describe('dataDispatch use case test', function () {
                 dataOptions.dataName = "YG";
                 dataOptions.startD = "2016-1-1 00:05:00";
                 dataOptions.endD = "2016-1-1 00:15:00";
-                DataDispatch.getDatas(dataOptions, function (err, cBData) {
+                DataDispatch.extractDatas(dataOptions, function (err, cBData) {
                     cBData.datas.should.be.eql([]);
                     done();
                 });
@@ -51,7 +51,7 @@ describe('dataDispatch use case test', function () {
                 dataOptions.dataName = "rain";
                 dataOptions.startD = "2016-1-1 00:15:00";
                 dataOptions.endD = "2016-1-1 00:16:00";
-                DataDispatch.getDatas(dataOptions, function (err, cBData) {
+                DataDispatch.extractDatas(dataOptions, function (err, cBData) {
                     cBData.datas.length.should.be.eql(2);
                     done();
                 });
