@@ -45,10 +45,70 @@ StationRepository.prototype.saveStation = function (stationName, cb) {
     }
 };
 
-StationRepository.prototype.updateStationRTData = function (stationRTDataConfig, cb) {
-    switch (stationRTDataConfig.stationName) {
+StationRepository.prototype.getStationRDConfig = function (stationName, cb) {
+    switch (stationName) {
+        case "noStation":
+            cb(null, null);
+            break;
+        case "noStation1":
+            cb(null, {
+                rain: {
+                    dataName: "rain",
+                    openRDM: true,
+                    timeSpace: 1000 * 60,
+                    timeLong: 1000 * 60 * 60 * 4
+                },
+                meter: {
+                    dataName: "meter",
+                    openRDM: true,
+                    timeSpace: 1000 * 60,
+                    timeLong: 1000 * 60 * 60 * 4
+                }
+            });
+            break;
+        case "inDCStation1":
+            cb(null, {
+                rain: {
+                    dataName: "rain",
+                    openRDM: true,
+                    timeSpace: 1000 * 60,
+                    timeLong: 1000 * 60 * 60 * 4
+                },
+                meter: {
+                    dataName: "meter",
+                    openRDM: true,
+                    timeSpace: 1000 * 60,
+                    timeLong: 1000 * 60
+                }
+            });
+            break;
+        default:
+            cb(null, {});
+            return;
+    }
+};
+
+StationRepository.prototype.getStationDVConfig = function (stationName, cb) {
+    switch (stationName) {
+        case "noStation":
+            cb(null, null);
+            break;
+        case "inDCStation1":
+            cb(null, {});
+            break;
+        default:
+            cb(null, null);
+            return;
+    }
+};
+
+StationRepository.prototype.updateStationRDConfig = function (stationRDConfig, cb) {
+    switch (stationRDConfig.stationName) {
         case "noStation":
             cb(null, {stationName: "noStation"});
+            break;
+        case "noStation1":
+            cb(null, null);
             break;
         case "errStation":
             cb(new Error("error"), null);
@@ -58,6 +118,29 @@ StationRepository.prototype.updateStationRTData = function (stationRTDataConfig,
             break;
         default:
             cb(null, {});
+            return;
+    }
+};
+
+StationRepository.prototype.updateStationDVConfig = function (stationDVConfig, cb) {
+    switch (stationDVConfig.stationName) {
+        case "noStation":
+            cb(null, null);
+            break;
+        case "inDCStation1":
+            cb(null, {
+                stationName: "inDCStation1",
+                dVConfigs: {
+                    rain: {
+                        visualName: "雨量",
+                        maxV: 3000,
+                        minV: 2900
+                    }
+                }
+            });
+            break;
+        default:
+            cb(null, null);
             return;
     }
 };

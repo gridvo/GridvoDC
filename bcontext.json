@@ -28,7 +28,7 @@
     },
     {
       "id": "stationRepository",
-      "func": "lib.application.repository.stationMongoDB",
+      "func": "lib.application.repository.stationRepositoryMongoDB",
       "props": [
         {
           "name": "dBUrl",
@@ -38,7 +38,7 @@
     },
     {
       "id": "dataRepository",
-      "func": "lib.application.repository.dataMongoDB",
+      "func": "lib.application.repository.dataRepositoryMongoDB",
       "props": [
         {
           "name": "dBUrl",

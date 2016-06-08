@@ -72,10 +72,10 @@ describe('Station repository MongoDB use case test', function () {
             });
         });
     });
-    describe('#updateStationRTData(stationRTDataConfig, cb)', function () {
+    describe('#updateStationRDConfig(StationRDConfig, cb)', function () {
         context('update station RT data config', function () {
             it('should return null if no station in datacenter', function (done) {
-                var stationRTDataConfig = {
+                var StationRDConfig = {
                     stationName: "noStation",
                     rTDataConfigs: {
                         rain: {
@@ -85,13 +85,13 @@ describe('Station repository MongoDB use case test', function () {
                         }
                     }
                 };
-                Repository.updateStationRTData(stationRTDataConfig, function (err, station) {
+                Repository.updateStationRDConfig(StationRDConfig, function (err, station) {
                     _.isNull(station).should.be.eql(true);
                     done();
                 });
             });
             it('should return station if update success', function (done) {
-                var stationRTDataConfig = {
+                var StationRDConfig = {
                     stationName: "station1",
                     rTDataConfigs: {
                         rain: {
@@ -101,14 +101,14 @@ describe('Station repository MongoDB use case test', function () {
                         }
                     }
                 };
-                Repository.updateStationRTData(stationRTDataConfig, function (err, station) {
+                Repository.updateStationRDConfig(StationRDConfig, function (err, station) {
                     station.stationName.should.be.eql("station1");
                     station.rTDataConfigs.rain.timeSpace.should.be.eql(1000);
                     done();
                 });
             });
             it('should return station ,it will have new config,if that init is no', function (done) {
-                var stationRTDataConfig = {
+                var StationRDConfig = {
                     stationName: "station1",
                     rTDataConfigs: {
                         rain: {
@@ -123,7 +123,7 @@ describe('Station repository MongoDB use case test', function () {
                         }
                     }
                 };
-                Repository.updateStationRTData(stationRTDataConfig, function (err, station) {
+                Repository.updateStationRDConfig(StationRDConfig, function (err, station) {
                     station.stationName.should.be.eql("station1");
                     station.rTDataConfigs.rain.timeSpace.should.be.eql(2000);
                     station.rTDataConfigs.meter.timeSpace.should.be.eql(1000);
@@ -132,7 +132,7 @@ describe('Station repository MongoDB use case test', function () {
             });
         });
     });
-    describe('#updateStationDataVisualization(stationDVConfig, cb)', function () {
+    describe('#updateStationDVConfig(stationDVConfig, cb)', function () {
         context('update station data visualization config', function () {
             it('should return null if no station in datacenter', function (done) {
                 var stationDVConfig = {
@@ -145,7 +145,7 @@ describe('Station repository MongoDB use case test', function () {
                         }
                     }
                 };
-                Repository.updateStationDataVisualization(stationDVConfig, function (err, station) {
+                Repository.updateStationDVConfig(stationDVConfig, function (err, station) {
                     _.isNull(station).should.be.eql(true);
                     done();
                 });
@@ -161,7 +161,7 @@ describe('Station repository MongoDB use case test', function () {
                         }
                     }
                 };
-                Repository.updateStationDataVisualization(stationDVConfig, function (err, station) {
+                Repository.updateStationDVConfig(stationDVConfig, function (err, station) {
                     station.stationName.should.be.eql("station1");
                     station.dVConfigs.rain.visualName.should.be.eql("雨量");
                     done();

@@ -44,24 +44,15 @@ describe('dataRTMaster use case test', function () {
             });
         });
     });
-    describe('#setStationRTData(stationRTDataConfig,cb)', function () {
-        context('when station client set rt data monitor', function () {
-            it('should success if station in data center and load rt data', function (done) {
-                var stationRTDataConfig = {};
-                stationRTDataConfig.stationName = "inDCStation1";
-                stationRTDataConfig.rTDataConfigs = {
-                    meter: {
-                        dataName: "meter",
-                        openRDM: true,
-                        timeSpace: 1000 * 30,
-                        timeLong: 1000 * 60 * 60 * 4
-                    }
-                };
-                DataRTMaster.setStationRTData(stationRTDataConfig, function (err, cBData) {
+    describe('#launchStationRDM(stationName,cb)', function () {
+        context('launch station rt data monitor', function () {
+            it('should relaunch if station in data center and reload rt data', function (done) {
+                DataRTMaster.launchStationRDM("inDCStation1", function (err, cBData) {
                     cBData.stationName.should.be.eql("inDCStation1");
-                    cBData.rTDataCount.should.be.eql(1);
-                    DataRTMaster.__rTDataMasterCenter__.stationRTDatas["inDCStation1"].rTDatas["meter"].timeSpace.should.be.eql(1000 * 30);
-                    DataRTMaster.__rTDataMasterCenter__.stationRTDatas["inDCStation1"].rTDatas["meter"].datas.length.should.be.eql(7);
+                    cBData.isLaunched.should.be.eql(true);
+                    cBData.rTDataCount.should.be.eql(2);
+                    DataRTMaster.__rTDataMasterCenter__.stationRTDatas["inDCStation1"].rTDatas["meter"].timeSpace.should.be.eql(1000 * 60);
+                    DataRTMaster.__rTDataMasterCenter__.stationRTDatas["inDCStation1"].rTDatas["meter"].datas.length.should.be.eql(1);
                     done();
                 });
             });
@@ -74,27 +65,12 @@ describe('dataRTMaster use case test', function () {
                     }
                 };
                 DataRTMaster.on(appEvent.application.STATION_OPEN_RTDATA, function (eventData) {
-                    eventData.stationName.should.be.eql("noStation");
+                    eventData.stationName.should.be.eql("noStation1");
                     doneMore();
                 });
-                var stationRTDataConfig = {};
-                stationRTDataConfig.stationName = "noStation";
-                stationRTDataConfig.rTDataConfigs = {
-                    rain: {
-                        dataName: "rain",
-                        openRDM: true,
-                        timeSpace: 1000,
-                        timeLong: 1000 * 60 * 60 * 4
-                    },
-                    meter: {
-                        dataName: "meter",
-                        openRDM: true,
-                        timeSpace: 1000,
-                        timeLong: 1000 * 60 * 60 * 4
-                    }
-                };
-                DataRTMaster.setStationRTData(stationRTDataConfig, function (err, cBData) {
-                    cBData.stationName.should.be.eql("noStation");
+                DataRTMaster.launchStationRDM("noStation1", function (err, cBData) {
+                    cBData.stationName.should.be.eql("noStation1");
+                    cBData.isLaunched.should.be.eql(true);
                     cBData.rTDataCount.should.be.eql(2);
                     doneMore();
                 });
@@ -123,18 +99,6 @@ describe('dataRTMaster use case test', function () {
                     eventData.timeLong.should.be.eql(1000 * 60);
                     eventData.datas.length.should.be.eql(1);
                     done();
-                });
-                var stationRTDataConfig = {};
-                stationRTDataConfig.stationName = "inDCStation1";
-                stationRTDataConfig.rTDataConfigs = {
-                    meter: {
-                        dataName: "meter",
-                        openRDM: true,
-                        timeSpace: 1000 * 60,
-                        timeLong: 1000 * 60
-                    }
-                };
-                DataRTMaster.setStationRTData(stationRTDataConfig, function (err, cbData) {
                 });
                 var oData = {};
                 oData.stationName = "inDCStation1";
