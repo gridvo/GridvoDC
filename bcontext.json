@@ -27,6 +27,16 @@
       ]
     },
     {
+      "id": "stationManage",
+      "func": "lib.application.stationManage",
+      "props": [
+        {
+          "name": "__stationRepository__",
+          "ref": "stationRepository"
+        }
+      ]
+    },
+    {
       "id": "stationRepository",
       "func": "lib.application.repository.stationRepositoryMongoDB",
       "props": [
