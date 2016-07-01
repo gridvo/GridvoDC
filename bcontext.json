@@ -55,20 +55,6 @@
           "value": "mongodb://10.0.2.16:27017/GDataCenter"
         }
       ]
-    },
-    {
-      "id": "mqttClient",
-      "func": "lib.infrastructure.mqttClient",
-      "args": [
-        {
-          "name": "mqttBrokerUrl",
-          "value": "mqtt://10.0.3.21:61613"
-        },
-        {
-          "name": "optionsStr",
-          "value": "{\"username\":\"gridvo\",\"password\":\"gridvo\"}"
-        }
-      ]
     }
   ]
 }
